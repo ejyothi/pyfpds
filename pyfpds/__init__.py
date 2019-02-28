@@ -131,7 +131,7 @@ class Contracts():
             resp = requests.get(self.feed_url + params + '&start={0}'.format(i), timeout=60, verify = False)
             self.query_url = resp.url
             self.log("finished querying {0}".format(resp.url))
-            resp_data = xmltodict.parse(resp.text, process_namespaces=True, namespaces={'http://www.fpdsng.com/FPDS': None, 'http://www.w3.org/2005/Atom': None})
+            resp_data = xmltodict.parse(resp.text, process_namespaces=True, namespaces={'http://www.fpds.gov/FPDS': None, 'http://www.w3.org/2005/Atom': None})
             try:
                 processed_data = self.process_data(resp_data['feed']['entry'])
                 for pd in processed_data:
